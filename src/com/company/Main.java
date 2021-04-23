@@ -14,6 +14,7 @@ public class Main {
         String date;
         float expense;
         float income;
+        TransactionDetails transactionDetails = new TransactionDetails();
 
         Scanner sc = new Scanner(System.in);
         System.out.println("**Welcome To ExpenseManager**");
@@ -42,34 +43,23 @@ public class Main {
                     income = sc.nextFloat();
 
                     Transactions transactions = new Transactions(date,expense,income);
-                    TransactionDetails transactionDetails = new TransactionDetails();
                     transactionDetails.add(transactions);
+                    System.out.println("Transaction added successfully");
                     break;
 
                 case 1:
                     System.out.println("Enter Date(yyyy-MM-dd) - ");
                     date = sc.next();
-                    System.out.println("Enter Expense - ");
-                    expense = sc.nextFloat();
-                    System.out.println("Enter Income - ");
-                    income = sc.nextFloat();
 
-                    Transactions transactions1 = new Transactions(date,expense,income);
-                    TransactionDetails transactionDetails1 = new TransactionDetails();
-                    transactionDetails1.edit(transactions1);
+                    transactionDetails.edit(date);
+                    System.out.println("Transaction edited successfully");
                     break;
 
                 case 2 :
                     System.out.println("Enter Date(yyyy-MM-dd) - ");
                     date = sc.next();
-                    System.out.println("Enter Expense - ");
-                    expense = sc.nextFloat();
-                    System.out.println("Enter Income - ");
-                    income = sc.nextFloat();
 
-                    Transactions transactions2 = new Transactions(date,expense,income);
-                    TransactionDetails transactionDetails2 = new TransactionDetails();
-                    transactionDetails2.delete(transactions2);
+                    transactionDetails.delete(date);
                     break;
 
                 case 3:
@@ -79,16 +69,14 @@ public class Main {
                     System.out.println("Enter the year - ");
                     int year = sc.nextInt();
 
-                    TransactionDetails transactionDetails3 = new TransactionDetails();
                     //getting details of particular month
-                    transactionDetails3.monthSummary(month,year);
+                    transactionDetails.monthSummary(month,year);
 
                     break;
 
                 case 4:
-                    TransactionDetails transactionDetails4 = new TransactionDetails();
                     //getting details of all the months
-                    transactionDetails4.allMonthsDetails();
+                    transactionDetails.allMonthsDetails();
                     break;
 
                 default:
